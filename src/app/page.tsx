@@ -4,7 +4,9 @@ import styles from './page.module.css';
 export default function Home() {
   return (
     <main className={styles.main}>
-      <div className={styles.description}>Choose your fighters!</div>
+      <div className={styles.description}>
+        <h1>Choose your fighters!</h1>
+      </div>
     </main>
   );
 }
