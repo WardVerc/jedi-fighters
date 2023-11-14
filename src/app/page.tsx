@@ -2,8 +2,9 @@
 
 import styles from './page.module.css';
 import { useState } from 'react';
-import FighterCard, { Fighter } from '@/components/FighterCard';
-import { fighters } from '../../fighters.js';
+import Overview from '@/components/Overview';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 export default function Home() {
   const [isLoading] = useState(false);
@@ -27,12 +28,9 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <h1>Choose your fighters!</h1>
-        {fighters.map((fighter) => {
-          return <FighterCard fighter={fighter as Fighter} key={fighter.id} />;
-        })}
-      </div>
+      <Provider store={store}>
+        <Overview />
+      </Provider>
     </main>
   );
 }

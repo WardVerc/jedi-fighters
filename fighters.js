@@ -1,4 +1,4 @@
-export const fighters = [
+export const fightersJS = [
   {
     id: 1,
     name: 'Luke Skywalker',
