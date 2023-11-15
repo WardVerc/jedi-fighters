@@ -22,10 +22,15 @@ export const currentTeamSlice = createSlice({
     addFighter: (state, action: PayloadAction<Fighter>) => {
       state.currentTeam = [...state.currentTeam, action.payload];
     },
+    removeFighterById: (state, action: PayloadAction<number>) => {
+      state.currentTeam = state.currentTeam.filter(
+        (fighter) => fighter.id !== action.payload
+      );
+    },
   },
 });
 
-export const { addFighter } = currentTeamSlice.actions;
+export const { addFighter, removeFighterById } = currentTeamSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectCount = (state: RootState) => state.currentTeam;

@@ -1,5 +1,5 @@
 import { useAppDispatch } from '@/app/hooks';
-import { addFighter } from '@/slices/currentTeam';
+import { removeFighterById } from '@/slices/currentTeam';
 import Image from 'next/image';
 export interface Fighter {
   id: number;
@@ -36,19 +36,19 @@ export interface Fighter {
   equipment?: string | string[];
 }
 
-interface FighterProps {
+interface FighterCardProps {
   fighter: Fighter;
 }
 
-export default function FighterCard({ fighter }: FighterProps) {
+export default function FighterCard({ fighter }: FighterCardProps) {
   const dispatch = useAppDispatch();
 
-  const addFighterToTeam = () => {
-    console.log(fighter.name + ' was selected!');
-    dispatch(addFighter(fighter));
+  const removeFighterFromTeam = () => {
+    dispatch(removeFighterById(fighter.id));
   };
+
   return (
-    <div style={{ border: '1px solid red' }} onClick={addFighterToTeam}>
+    <div>
       <p>{fighter.name}</p>
       <Image
         src={fighter.image}
@@ -56,6 +56,8 @@ export default function FighterCard({ fighter }: FighterProps) {
         width={100}
         height={100}
       />
+
+      <button onClick={removeFighterFromTeam}>Remove</button>
     </div>
   );
 }
