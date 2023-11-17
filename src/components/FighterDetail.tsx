@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addFighter } from '@/redux/slices/currentTeam';
 import Link from 'next/link';
 import { Fighter } from '@/models/Fighter';
+import styles from './fighterDetail.module.css';
 
 interface FighterDetailProps {
   id: number;
@@ -103,7 +104,7 @@ export default function FighterDetail({ id }: FighterDetailProps) {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       {fighter ? (
         <>
           <div>

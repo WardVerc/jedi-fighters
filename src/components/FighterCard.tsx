@@ -20,8 +20,8 @@ export default function FighterCard({ fighter }: FighterCardProps) {
       <Image
         src={fighter.image}
         alt='A star wars fighter'
-        width={100}
-        height={100}
+        width={75}
+        height={75}
       />
 
       <button onClick={removeFighterFromTeam}>Remove</button>

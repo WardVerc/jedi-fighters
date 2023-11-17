@@ -10,7 +10,7 @@ export default function FightersOverview() {
   );
 
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Choose your fighters!</h1>
       <div className={styles.fighterGrid}>
         {fighters &&
@@ -21,8 +21,8 @@ export default function FightersOverview() {
                   <Image
                     src={fighter.image}
                     alt='A star wars fighter'
-                    width={100}
-                    height={100}
+                    width={150}
+                    height={150}
                   />
                 </div>
               </Link>

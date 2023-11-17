@@ -1,23 +1,13 @@
 :root {
   --font-mono: ui-monospace, monospace, arial;
-
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 100, 100, 100;
-  --background-end-rgb: 255, 255, 255;
+  --PRIMARY-COLOR: rgba(4, 112, 228, 0.99);
+  --SECONDARY-COLOR: rgba(196, 5, 5, 0.99);
 }
 
-html,
 body {
+  width: 100vw;
   height: 100vh;
-  overflow-x: hidden;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
+    url('../../public/DALLE-spacewhale2.png');
+  background-size: cover;
 }
