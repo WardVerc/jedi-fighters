@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import styles from './fighterOverview.module.css';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { addFighter } from '../redux/slices/currentTeam';
-import { Fighter } from './FighterCard';
+import { useAppSelector } from '../redux/hooks';
 import { RootState } from '../redux/store';
 import Link from 'next/link';
 

@@ -1,6 +1,7 @@
 import { useAppSelector } from '@/redux/hooks';
-import FighterCard, { Fighter } from './FighterCard';
+import FighterCard from './FighterCard';
 import { RootState } from '@/redux/store';
+import { Fighter } from '@/models/Fighter';
 
 export default function CurrentTeamOverview() {
   const currentTeam = useAppSelector(

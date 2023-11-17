@@ -1,7 +1,6 @@
+import { Fighter } from '@/models/Fighter';
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../store';
-import { Fighter } from '../../components/FighterCard';
 
 interface CurrentTeamState {
   currentTeam: Fighter[];

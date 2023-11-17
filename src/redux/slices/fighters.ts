@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../store';
-import { Fighter } from '../../components/FighterCard';
 import { fightersJS } from '../../../fighters';
+import { Fighter } from '@/models/Fighter';
 
 interface FightersState {
   fighters: Fighter[];
