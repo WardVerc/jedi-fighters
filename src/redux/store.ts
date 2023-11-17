@@ -1,13 +1,27 @@
 import currentTeam from '@/redux/slices/currentTeam';
 import fighters from '@/redux/slices/fighters';
-import { configureStore } from '@reduxjs/toolkit';
+import { createStore } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
-export const store = configureStore({
-  reducer: {
-    currentTeam: currentTeam,
-    fighters: fighters,
-  },
+import { combineReducers } from '@reduxjs/toolkit';
+
+const persistConfig = {
+  key: 'root',
+  storage,
+};
+
+const rootReducer = combineReducers({
+  currentTeam: currentTeam,
+  fighters: fighters,
 });
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+let store = createStore(persistedReducer);
+let persistor = persistStore(store);
+const storePersistor = { store, persistor };
+export default storePersistor;
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;

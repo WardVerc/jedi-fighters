@@ -1,6 +1,7 @@
 'use client';
 import FighterDetail from '@/components/FighterDetail';
 import styles from './page.module.css';
+import CurrentTeamOverview from '@/components/CurrentTeamOverview';
 
 interface FighterDetailPageProps {
   params: {
@@ -14,6 +15,7 @@ export default function FighterDetailPage({
   return (
     <div className={styles.main}>
       <FighterDetail id={id} />
+      <CurrentTeamOverview />
     </div>
   );
 }
