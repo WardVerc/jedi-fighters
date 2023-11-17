@@ -1,5 +1,5 @@
-import currentTeam from '@/slices/currentTeam';
-import fighters from '@/slices/fighters';
+import currentTeam from '@/redux/slices/currentTeam';
+import fighters from '@/redux/slices/fighters';
 import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({

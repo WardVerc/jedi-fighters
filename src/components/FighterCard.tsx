@@ -1,5 +1,5 @@
-import { useAppDispatch } from '@/app/hooks';
-import { removeFighterById } from '@/slices/currentTeam';
+import { useAppDispatch } from '@/redux/hooks';
+import { removeFighterById } from '@/redux/slices/currentTeam';
 import Image from 'next/image';
 export interface Fighter {
   id: number;
