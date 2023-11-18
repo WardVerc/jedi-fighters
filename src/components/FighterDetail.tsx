@@ -1,5 +1,4 @@
 import { RootState } from '../redux/store';
-import Image from 'next/image';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addFighter } from '@/redux/slices/currentTeam';
 import Link from 'next/link';
@@ -7,6 +6,7 @@ import { Fighter, isFighterEvil } from '@/models/Fighter';
 import styles from './fighterDetail.module.css';
 import Button from '@mui/material/Button';
 import { useToast } from '@/hooks/useToast';
+import FighterInformation from './FighterInformation';
 
 interface FighterDetailProps {
   id: number;
@@ -21,7 +21,6 @@ export default function FighterDetail({ id }: FighterDetailProps) {
     (state: RootState) => state.fighters.fighters
   );
   const fighter = fighters.find((character) => character.id == id);
-
   const { showErrorToast, ErrorToast } = useToast();
 
   const addFighterToTeam = (fighter: Fighter) => {
@@ -67,29 +66,7 @@ export default function FighterDetail({ id }: FighterDetailProps) {
     <div className={styles.container}>
       {fighter ? (
         <div className={styles.fighterContainer}>
-          <div className={styles.fighterInformation}>
-            <Image
-              src={fighter.image}
-              alt='A star wars fighter'
-              width={200}
-              height={200}
-            />
-            <p className={styles.fighterDescription}>Name: {fighter.name}</p>
-            <p className={styles.fighterDescription}>
-              Height: {fighter.height}m
-            </p>
-            <p className={styles.fighterDescription}>Mass: {fighter.mass}kg</p>
-            {fighter.affiliations.length > 0 && (
-              <div>
-                <p className={styles.fighterDescription}>Affiliations:</p>
-                <ul>
-                  {fighter.affiliations.map((affiliation) => (
-                    <li key={affiliation}>{affiliation}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
+          <FighterInformation fighter={fighter} />
           <div className={styles.actionsContainer}>
             <Button
               onClick={() => addFighterToTeam(fighter)}
