@@ -2,7 +2,7 @@
 import styles from './page.module.css';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import CurrentTeamOverview from '@/components/CurrentTeamOverview';
+import CurrentTeamOverview from '@/components/CurrentTeamOverview/CurrentTeamOverview';
 
 // Darktheme for Material UI components
 const darkTheme = createTheme({

@@ -1,4 +1,4 @@
-import { RootState } from '../redux/store';
+import { RootState } from '../../redux/store';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addFighter } from '@/redux/slices/currentTeam';
 import Link from 'next/link';
@@ -6,7 +6,7 @@ import { Fighter, isFighterEvil } from '@/models/Fighter';
 import styles from './fighterDetail.module.css';
 import Button from '@mui/material/Button';
 import { useToast } from '@/hooks/useToast';
-import FighterInformation from './FighterInformation';
+import FighterInformation from '../FighterInformation/FighterInformation';
 
 interface FighterDetailProps {
   id: number;

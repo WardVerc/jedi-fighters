@@ -2,8 +2,8 @@
 import styles from './page.module.css';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import FighterDetail from '@/components/FighterDetail';
-import CurrentTeamOverview from '@/components/CurrentTeamOverview';
+import FighterDetail from '@/components/FighterDetail/FighterDetail';
+import CurrentTeamOverview from '@/components/CurrentTeamOverview/CurrentTeamOverview';
 
 // Darktheme for Material UI components
 const darkTheme = createTheme({

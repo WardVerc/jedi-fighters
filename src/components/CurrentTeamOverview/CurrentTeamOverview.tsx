@@ -1,5 +1,5 @@
 import { useAppSelector } from '@/redux/hooks';
-import FighterCard from './FighterCard';
+import FighterCard from '../FighterCard/FighterCard';
 import { RootState } from '@/redux/store';
 import { Fighter } from '@/models/Fighter';
 import styles from './currentTeamOverview.module.css';

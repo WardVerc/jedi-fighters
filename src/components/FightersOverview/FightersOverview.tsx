@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import styles from './fighterOverview.module.css';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { RootState } from '../redux/store';
+import styles from './fightersOverview.module.css';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { RootState } from '../../redux/store';
 import Link from 'next/link';
 import { ChangeEvent, useEffect, useState } from 'react';
 import useGetFighters from '@/hooks/useGetFighters';
