@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { addFighter } from '@/redux/slices/currentTeam';
 import Link from 'next/link';
-import { Fighter } from '@/models/Fighter';
+import { Fighter, isFighterEvil } from '@/models/Fighter';
 import styles from './fighterDetail.module.css';
 
 interface FighterDetailProps {
@@ -20,55 +20,14 @@ export default function FighterDetail({ id }: FighterDetailProps) {
   );
   const fighter = fighters.find((character) => character.id == id);
 
-  const hasDarthOrSithMasters = (fighter: Fighter): boolean => {
-    if (fighter.masters) {
-      if (Array.isArray(fighter.masters)) {
-        return fighter.masters.some(
-          (master) =>
-            master.toLowerCase().includes('darth') ||
-            master.toLowerCase().includes('sith')
-        );
-      } else {
-        return (
-          typeof fighter.masters === 'string' &&
-          (fighter.masters.toLowerCase().includes('darth') ||
-            fighter.masters.toLowerCase().includes('sith'))
-        );
-      }
-    }
-
-    return false;
-  };
-
-  const hasEvilAffiliations = (fighter: Fighter): boolean => {
-    return fighter?.affiliations.some(
-      (affiliation) =>
-        affiliation.toLowerCase().includes('darth') ||
-        affiliation.toLowerCase().includes('sith')
-    );
-  };
-
-  const isFighterEvil = () => {
-    const nameContainsEvil = fighter?.name
-      .toLowerCase()
-      .includes('darth' || 'sith');
-
-    const isAffiliatedWithEvil = fighter && hasEvilAffiliations(fighter);
-    const hasEvilMaster = fighter && hasDarthOrSithMasters(fighter);
-
-    if (nameContainsEvil || isAffiliatedWithEvil || hasEvilMaster) {
-      return true;
-    }
-    return false;
-  };
-
   const addFighterToTeam = (fighter: Fighter) => {
     if (currentTeam.length == 5) {
       // Show pop up
       console.log("You can't add anymore fighters!");
       return;
     }
-    if (isFighterEvil()) {
+    if (isFighterEvil(fighter)) {
+      // Show pop up
       console.log(
         'Our systems detected a malicious vibe from this fighter. Maybe choose a different fighter.'
       );

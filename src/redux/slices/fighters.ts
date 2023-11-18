@@ -8,7 +8,7 @@ interface FightersState {
 }
 
 const initialState: FightersState = {
-  fighters: fightersJS as Fighter[],
+  fighters: [],
 };
 
 export const fightersSlice = createSlice({

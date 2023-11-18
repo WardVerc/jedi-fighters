@@ -32,3 +32,43 @@ export interface Fighter {
   platingColor?: string;
   equipment?: string | string[];
 }
+
+export const hasDarthMasters = (fighter: Fighter): boolean => {
+  if (fighter.masters) {
+    if (Array.isArray(fighter.masters)) {
+      return fighter.masters.some((master) =>
+        master.toLowerCase().includes('darth')
+      );
+    } else {
+      return (
+        typeof fighter.masters === 'string' &&
+        fighter.masters.toLowerCase().includes('darth')
+      );
+    }
+  }
+
+  return false;
+};
+
+export const hasEvilAffiliations = (fighter: Fighter): boolean => {
+  return fighter?.affiliations.some(
+    (affiliation) =>
+      affiliation.toLowerCase().includes('darth') ||
+      affiliation.toLowerCase().includes('sith')
+  );
+};
+
+export const isFighterEvil = (fighter: Fighter) => {
+  const nameContainsEvil = fighter.name
+    .toLowerCase()
+    .includes('darth' || 'sith');
+
+  if (
+    nameContainsEvil ||
+    hasEvilAffiliations(fighter) ||
+    hasDarthMasters(fighter)
+  ) {
+    return true;
+  }
+  return false;
+};
