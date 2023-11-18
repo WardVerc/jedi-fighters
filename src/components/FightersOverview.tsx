@@ -3,17 +3,30 @@ import styles from './fighterOverview.module.css';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { RootState } from '../redux/store';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import useGetFighters from '@/hooks/useGetFighters';
 import { setFighters } from '@/redux/slices/fighters';
+import usePagination from '@/hooks/usePagination';
+import Pagination from '@mui/material/Pagination';
+
+const ITEMS_PER_PAGE = 6;
 
 export default function FightersOverview() {
-  const { fetchedFighters, loading, error } = useGetFighters();
   const dispatch = useAppDispatch();
+  const { fetchedFighters, loading, error } = useGetFighters();
 
   const fighters = useAppSelector(
     (state: RootState) => state.fighters.fighters
   );
+  const { jumpPage, currentPageData } = usePagination(fighters, ITEMS_PER_PAGE);
+  const [page, setPage] = useState(1);
+
+  const pageCount = Math.ceil(fighters.length / ITEMS_PER_PAGE);
+
+  const handlePageChange = (event: ChangeEvent<unknown>, page: number) => {
+    setPage(page);
+    jumpPage(page);
+  };
 
   useEffect(() => {
     if (fighters.length == 0) {
@@ -33,8 +46,8 @@ export default function FightersOverview() {
     <div className={styles.container}>
       <h1>Choose your fighters!</h1>
       <div className={styles.fighterGrid}>
-        {fighters &&
-          fighters.map((fighter) => {
+        {currentPageData() &&
+          currentPageData().map((fighter) => {
             return (
               <Link href={`/${fighter.id}`} key={fighter.id}>
                 <div>
@@ -48,6 +61,14 @@ export default function FightersOverview() {
               </Link>
             );
           })}
+        <Pagination
+          count={pageCount}
+          color='primary'
+          size='large'
+          page={page}
+          variant='outlined'
+          onChange={handlePageChange}
+        />
       </div>
     </div>
   );

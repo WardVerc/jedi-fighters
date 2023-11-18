@@ -4,6 +4,12 @@ Assemble your team to fight the dark side!
 
 ## Getting Started
 
+Install the packages first:
+
+```bash
+npm i
+```
+
 To start, run:
 
 ```bash
@@ -12,6 +18,15 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Remarks
+## Notes
 
-- Installed `redux-persist` to keep data when changing pages
+- This is a [React](https://react.dev/) project using [NextJS 14](https://nextjs.org/) and [Redux](https://redux.js.org/) + [Redux Toolkit](https://redux-toolkit.js.org/)
+- Installed [redux-persist](https://github.com/rt2zz/redux-persist) to keep data when changing pages.
+- [Material UI](https://mui.com/material-ui/) was used to style some components
+- [Jest](https://jestjs.io/) was used for unit tests
+- [DALL-E](https://openai.com/dall-e-2) was used to create the background and placeholder image.
+
+## Next steps
+
+- Add translations
+- Write more unit tests to get more code coverage
