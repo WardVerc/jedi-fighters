@@ -21,9 +21,15 @@ export default function CurrentTeamOverview({
     <div className={styles.container}>
       <h2>Your team:</h2>
       <div className={styles.fighterCardsContainer}>
-        {currentTeam.map((fighter) => {
-          return <FighterCard fighter={fighter as Fighter} key={fighter.id} />;
-        })}
+        {currentTeam.length > 0 ? (
+          currentTeam.map((fighter) => {
+            return (
+              <FighterCard fighter={fighter as Fighter} key={fighter.id} />
+            );
+          })
+        ) : (
+          <p>No teammembers yet.</p>
+        )}
       </div>
       {showHomeButton && (
         <Link href={'/'} className={styles.homeButton}>
