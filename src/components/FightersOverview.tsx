@@ -8,6 +8,7 @@ import useGetFighters from '@/hooks/useGetFighters';
 import { setFighters } from '@/redux/slices/fighters';
 import usePagination from '@/hooks/usePagination';
 import Pagination from '@mui/material/Pagination';
+import Button from '@mui/material/Button';
 
 const ITEMS_PER_PAGE = 10;
 
@@ -71,6 +72,11 @@ export default function FightersOverview() {
         onChange={handlePageChange}
         className={styles.pagination}
       />
+      <Link href={'/team'}>
+        <Button variant='outlined' size='small'>
+          My Team
+        </Button>
+      </Link>
     </div>
   );
 }

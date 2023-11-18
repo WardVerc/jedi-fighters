@@ -3,8 +3,16 @@ import FighterCard from './FighterCard';
 import { RootState } from '@/redux/store';
 import { Fighter } from '@/models/Fighter';
 import styles from './currentTeamOverview.module.css';
+import Link from 'next/link';
+import Button from '@mui/material/Button';
 
-export default function CurrentTeamOverview() {
+interface CurrentTeamOverviewProps {
+  showHomeButton?: boolean;
+}
+
+export default function CurrentTeamOverview({
+  showHomeButton = false,
+}: CurrentTeamOverviewProps) {
   const currentTeam = useAppSelector(
     (state: RootState) => state.currentTeam.currentTeam
   );
@@ -17,6 +25,13 @@ export default function CurrentTeamOverview() {
           return <FighterCard fighter={fighter as Fighter} key={fighter.id} />;
         })}
       </div>
+      {showHomeButton && (
+        <Link href={'/'} className={styles.homeButton}>
+          <Button variant='outlined' size='small'>
+            Home
+          </Button>
+        </Link>
+      )}
     </div>
   );
 }
