@@ -5,6 +5,7 @@ import { addFighter } from '@/redux/slices/currentTeam';
 import Link from 'next/link';
 import { Fighter, isFighterEvil } from '@/models/Fighter';
 import styles from './fighterDetail.module.css';
+import Button from '@mui/material/Button';
 
 interface FighterDetailProps {
   id: number;
@@ -65,20 +66,22 @@ export default function FighterDetail({ id }: FighterDetailProps) {
   return (
     <div className={styles.container}>
       {fighter ? (
-        <>
-          <div>
+        <div className={styles.fighterContainer}>
+          <div className={styles.fighterInformation}>
             <Image
               src={fighter.image}
               alt='A star wars fighter'
               width={200}
               height={200}
             />
-            <p>Name: {fighter.name}</p>
-            <p>Height: {fighter.height}m</p>
-            <p>Mass: {fighter.mass}kg</p>
+            <p className={styles.fighterDescription}>Name: {fighter.name}</p>
+            <p className={styles.fighterDescription}>
+              Height: {fighter.height}m
+            </p>
+            <p className={styles.fighterDescription}>Mass: {fighter.mass}kg</p>
             {fighter.affiliations.length > 0 && (
               <div>
-                <p>Affiliations:</p>
+                <p className={styles.fighterDescription}>Affiliations:</p>
                 <ul>
                   {fighter.affiliations.map((affiliation) => (
                     <li key={affiliation}>{affiliation}</li>
@@ -86,17 +89,35 @@ export default function FighterDetail({ id }: FighterDetailProps) {
                 </ul>
               </div>
             )}
-            <button onClick={() => addFighterToTeam(fighter)}>Choose</button>
           </div>
-          <div>
-            <Link href={`/${getPreviousId()}`}>
-              <button>Previous</button>
-            </Link>
-            <Link href={`/${getNextId()}`}>
-              <button>Next</button>
-            </Link>
+          <div className={styles.actionsContainer}>
+            <Button
+              onClick={() => addFighterToTeam(fighter)}
+              variant='outlined'
+              size='large'
+              color='success'
+            >
+              Add to team
+            </Button>
+            <div className={styles.pageActionsContainer}>
+              <Link href={`/${getPreviousId()}`}>
+                <Button variant='outlined' size='small'>
+                  Previous
+                </Button>
+              </Link>
+              <Link href={'/'}>
+                <Button variant='outlined' size='small'>
+                  Home
+                </Button>
+              </Link>
+              <Link href={`/${getNextId()}`}>
+                <Button variant='outlined' size='small'>
+                  Next
+                </Button>
+              </Link>
+            </div>
           </div>
-        </>
+        </div>
       ) : (
         <p>No fighter was found.</p>
       )}

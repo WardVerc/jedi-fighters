@@ -9,7 +9,7 @@ import { setFighters } from '@/redux/slices/fighters';
 import usePagination from '@/hooks/usePagination';
 import Pagination from '@mui/material/Pagination';
 
-const ITEMS_PER_PAGE = 6;
+const ITEMS_PER_PAGE = 10;
 
 export default function FightersOverview() {
   const dispatch = useAppDispatch();
@@ -54,22 +54,23 @@ export default function FightersOverview() {
                   <Image
                     src={fighter.image}
                     alt='A star wars fighter'
-                    width={150}
-                    height={150}
+                    width={140}
+                    height={140}
                   />
                 </div>
               </Link>
             );
           })}
-        <Pagination
-          count={pageCount}
-          color='primary'
-          size='large'
-          page={page}
-          variant='outlined'
-          onChange={handlePageChange}
-        />
       </div>
+      <Pagination
+        count={pageCount}
+        color='primary'
+        size='large'
+        page={page}
+        variant='outlined'
+        onChange={handlePageChange}
+        className={styles.pagination}
+      />
     </div>
   );
 }

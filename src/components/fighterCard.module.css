@@ -1,0 +1,16 @@
+.fighterContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.deleteButton {
+  margin-top: 15px !important;
+}

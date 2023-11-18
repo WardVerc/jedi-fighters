@@ -1,7 +1,16 @@
 'use client';
-import FighterDetail from '@/components/FighterDetail';
 import styles from './page.module.css';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import FighterDetail from '@/components/FighterDetail';
 import CurrentTeamOverview from '@/components/CurrentTeamOverview';
+
+// Darktheme for Material UI components
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 interface FighterDetailPageProps {
   params: {
@@ -13,9 +22,12 @@ export default function FighterDetailPage({
   params: { id },
 }: FighterDetailPageProps) {
   return (
-    <div className={styles.main}>
-      <FighterDetail id={id} />
-      <CurrentTeamOverview />
-    </div>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <div className={styles.main}>
+        <FighterDetail id={id} />
+        <CurrentTeamOverview />
+      </div>
+    </ThemeProvider>
   );
 }

@@ -1,3 +1,9 @@
 .main {
-  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--font-mono);
+  height: 100%;
+  padding: 2rem;
 }
