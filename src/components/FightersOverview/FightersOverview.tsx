@@ -10,7 +10,7 @@ import usePagination from '@/hooks/usePagination';
 import Pagination from '@mui/material/Pagination';
 import Button from '@mui/material/Button';
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 9;
 
 export default function FightersOverview() {
   const dispatch = useAppDispatch();

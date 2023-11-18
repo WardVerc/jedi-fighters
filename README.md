@@ -28,7 +28,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Next steps
 
-- Add translations
-- Write more unit tests to get more code coverage
 - Let your team battle against a random evil team doing rock/paper/scissors
   - Check my Python script that does this from my [100 days of Python repo](https://github.com/WardVerc/python-course/blob/master/day-4-rock-paper-scissors/rock-paper-scissors.py)
+- Write more unit tests to get more code coverage
+- Add translations

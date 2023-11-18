@@ -29,7 +29,7 @@ export default function useGetFighters() {
 
               if (!imageResponse.ok) {
                 // if image url returns a 404 response, replace it with placeholder
-                fighter.image = '/DALLE-spacewhale2.png';
+                fighter.image = '/DALLE-spacewhale3.png';
               }
 
               return fighter;
