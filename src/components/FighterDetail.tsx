@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Fighter, isFighterEvil } from '@/models/Fighter';
 import styles from './fighterDetail.module.css';
 import Button from '@mui/material/Button';
+import { useToast } from '@/hooks/useToast';
 
 interface FighterDetailProps {
   id: number;
@@ -21,22 +22,21 @@ export default function FighterDetail({ id }: FighterDetailProps) {
   );
   const fighter = fighters.find((character) => character.id == id);
 
+  const { showErrorToast, ErrorToast } = useToast();
+
   const addFighterToTeam = (fighter: Fighter) => {
     if (currentTeam.length == 5) {
-      // Show pop up
-      console.log("You can't add anymore fighters!");
+      showErrorToast("You can't add anymore fighters!");
       return;
     }
     if (isFighterEvil(fighter)) {
-      // Show pop up
-      console.log(
+      showErrorToast(
         'Our systems detected a malicious vibe from this fighter. Maybe choose a different fighter.'
       );
       return;
     }
     if (currentTeam.some((fighter) => fighter.id == id)) {
-      // Show pop up
-      console.log('Fighter is already in your team!');
+      showErrorToast('Fighter is already in your team!');
       return;
     } else {
       dispatch(addFighter(fighter));
@@ -121,6 +121,7 @@ export default function FighterDetail({ id }: FighterDetailProps) {
       ) : (
         <p>No fighter was found.</p>
       )}
+      {ErrorToast}
     </div>
   );
 }
