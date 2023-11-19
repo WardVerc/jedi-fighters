@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from 'next/image';
 import { Fighter } from '@/models/Fighter';
 import styles from './fighterInformation.module.css';

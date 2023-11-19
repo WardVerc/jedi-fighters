@@ -11,23 +11,13 @@ export default function usePagination(data: Fighter[], itemsPerPage: number) {
     return data.slice(begin, end);
   }
 
-  function nextPage() {
-    setCurrentPage((currentPage) => Math.min(currentPage + 1, maxPage));
-  }
-
-  function prevPage() {
-    setCurrentPage((currentPage) => Math.max(currentPage - 1, 1));
-  }
-
-  function jumpPage(page: number) {
+  function goToPage(page: number) {
     const pageNumber = Math.max(1, page);
     setCurrentPage(Math.min(pageNumber, maxPage));
   }
 
   return {
-    nextPage,
-    prevPage,
-    jumpPage,
+    goToPage,
     currentPageData,
     currentPage,
     maxPage,

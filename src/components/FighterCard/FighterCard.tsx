@@ -1,3 +1,4 @@
+import React from 'react';
 import { Fighter } from '@/models/Fighter';
 import { useAppDispatch } from '@/redux/hooks';
 import { removeFighterById } from '@/redux/slices/currentTeam';

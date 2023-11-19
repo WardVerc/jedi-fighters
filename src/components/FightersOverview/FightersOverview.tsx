@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from 'next/image';
 import styles from './fightersOverview.module.css';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
@@ -19,14 +20,14 @@ export default function FightersOverview() {
   const fighters = useAppSelector(
     (state: RootState) => state.fighters.fighters
   );
-  const { jumpPage, currentPageData } = usePagination(fighters, ITEMS_PER_PAGE);
+  const { goToPage, currentPageData } = usePagination(fighters, ITEMS_PER_PAGE);
   const [page, setPage] = useState(1);
 
   const pageCount = Math.ceil(fighters.length / ITEMS_PER_PAGE);
 
   const handlePageChange = (event: ChangeEvent<unknown>, page: number) => {
     setPage(page);
-    jumpPage(page);
+    goToPage(page);
   };
 
   useEffect(() => {

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useAppSelector } from '@/redux/hooks';
 import FighterCard from '../FighterCard/FighterCard';
 import { RootState } from '@/redux/store';
