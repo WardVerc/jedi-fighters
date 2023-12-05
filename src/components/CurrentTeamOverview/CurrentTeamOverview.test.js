@@ -4,8 +4,7 @@ import { useAppSelector } from '@/redux/hooks';
 
 import { render } from '@testing-library/react';
 import React from 'react';
-import ReduxProvider from '@/redux/ReduxProvider';
-import storePersistor from '@/redux/store';
+import StoreProvider from '../../app/StoreProvider';
 import '@testing-library/jest-dom';
 
 jest.mock('@/redux/hooks', () => ({
@@ -15,10 +14,7 @@ jest.mock('@/redux/hooks', () => ({
 
 describe('CurrentTeamOverview', () => {
   test('renders team members correctly', () => {
-    const store = storePersistor.store;
-    const wrapper = ({ children }) => (
-      <ReduxProvider reduxStore={store}>{children}</ReduxProvider>
-    );
+    const wrapper = ({ children }) => <StoreProvider>{children}</StoreProvider>;
     const mockCurrentTeam = [fightersJS[0], fightersJS[1]];
     useAppSelector.mockReturnValueOnce(mockCurrentTeam);
 
