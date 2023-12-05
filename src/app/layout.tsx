@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import ReduxProvider from '@/redux/ReduxProvider';
+import StoreProvider from './StoreProvider';
 
 export const metadata: Metadata = {
   title: 'Jedi Fighters',
@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body>
-        <ReduxProvider>{children}</ReduxProvider>
+        <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
   );
