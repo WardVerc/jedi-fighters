@@ -27,7 +27,7 @@ npm run test
 ## Notes
 
 - This is a [React](https://react.dev/) project using [NextJS 14](https://nextjs.org/) and [Redux](https://redux.js.org/) + [Redux Toolkit](https://redux-toolkit.js.org/)
-- Installed [redux-persist](https://github.com/rt2zz/redux-persist) to keep data when changing pages.
+- ⚠ Installed [redux-persist](https://github.com/rt2zz/redux-persist) to keep data when changing pages. ⚠ This needs to be removed and the Provider must wrap the central App module.
 - [Material UI](https://mui.com/material-ui/) was used to style some components
 - [Jest](https://jestjs.io/) was used for unit tests
 - [DALL-E](https://openai.com/dall-e-2) was used to create the background and placeholder image.
